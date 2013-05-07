@@ -2,6 +2,10 @@ get '/' do
   erb :index
 end
 
+post '/' do
+  redirect '/' + params[:twitter_handle]
+end
+
 get '/:twitterhandle' do
   begin
     Twitter.user(params[:username])
