@@ -1,6 +1,9 @@
 # My Skeleton App
 ===========
 
+## References
+- [Twitter Gem](https://github.com/sferik/twitter)
+
 ## Objects
 
 ### Twitter User

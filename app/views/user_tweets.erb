@@ -1,15 +1,18 @@
-<h1>User Tweets</h1>
-
-<input id='twitter_handle' type='hidden' value='<%= @user.twitter_handle %>'></input>
-
-<% if @tweets %>
-  <%=erb :_tweets, :layout => false, :tweets => @tweets %>
+<% if @error %>
+  <h1>User doesn't exist</h1>
 <% else %>
-  <div class="spinner">
-    <%= erb :_spinner, :layout => false %>
-  </div>
+
+  <div class='user_tweets'><h1>@<%= @user.twitter_handle %></h1></div>
+
+  <input id='twitter_handle' type='hidden' value='<%= @user.twitter_handle %>'></input>
+
+  <div class="spinner"><img src='/ajax-loader.gif'></img></div>
+
   <div class='user_tweets'></div>
+
+  <link rel="stylesheet" href="/css/user_tweets.css">
   <script src="/js/user_profile.js"></script>
+
 <% end %>
 
 

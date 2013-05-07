@@ -1,0 +1,34 @@
+.user_tweets {
+  display: none;
+}
+
+.user_tweets p {
+  background-color: #698E7F;
+  border: 1px solid #698E7F;
+  color: #C8C8A9;
+  border-radius: 12px;
+  padding: 7px;
+  margin: 3px;
+}
+
+.user_tweets h1 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 3em;
+}
+
+.spinner {
+  text-align: center;
+  margin: 20px;
+}
+
+.user_tweets a {
+  text-decoration: none;
+  /*color: #EEE0B7;*/
+  color: #C8C8A9;
+}
+
+.user_tweets a:hover {
+  color: #E8CAAF;
+};

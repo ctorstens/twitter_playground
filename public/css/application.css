@@ -30,7 +30,7 @@ nav {
   padding: 0;
   color: #C8C8A9;
   line-height: 40px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 .navlist {
