@@ -20,6 +20,7 @@ require 'sinatra/reloader' if development?
 require 'shotgun'
 
 require 'erb'
+require 'debugger'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -40,6 +41,6 @@ require 'oauth'
 Twitter.configure do |config|
   config.consumer_key = ENV['TWITTER_KEY']
   config.consumer_secret = ENV['TWITTER_SECRET']
-  config.oauth_token = ENV['TWITTER_ACCESS_TOKEN']
-  config.oauth_token_secret = ENV['TWITTER_TOKEN_SECRET']
+  # config.oauth_token = ENV['TWITTER_ACCESS_TOKEN']
+  # config.oauth_token_secret = ENV['TWITTER_TOKEN_SECRET']
 end

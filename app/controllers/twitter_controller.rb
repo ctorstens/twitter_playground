@@ -11,20 +11,34 @@ get '/twitter/auth' do
   session.delete(:request_token)
 
   # at this point in the code is where you'll need to create your user account and store the access token
+  p @twitter_access_token.inspect
   current_user.update_attributes(:twitter_user_name => @twitter_access_token.params[:screen_name], :twitter_oauth_token => @twitter_access_token.params[:oauth_token], :twitter_oauth_secret => @twitter_access_token.params[:oauth_token_secret])
+  # User.create(:twitter_user_name => @twitter_access_token.params[:screen_name], :twitter_oauth_token => @twitter_access_token.params[:oauth_token], :twitter_oauth_secret => @twitter_access_token.params[:oauth_token_secret])
   @twitter_access_token
-  erb :index
+  # erb :index
+  redirect '/twitter/user/' + current_user.twitter_user_name
 end
 
 
 
 get '/twitter/user/:twitterhandle' do
   begin
-    Twitter.user(params[:username])
+    @client = Twitter::Client.new(
+      :consumer_key => ENV['TWITTER_KEY'],
+      :consumer_secret => ENV['TWITTER_SECRET'],
+      :oauth_token => current_user.twitter_oauth_token,
+      :oauth_token_secret => current_user.twitter_oauth_secret
+      )
+    puts "Fetch Tweets"
+    p @client
+    @client.user(params[:twitterhandle])
+      # @client.update(params[:tweet])
+
+    # Twitter.user(params[:username])
     @user = User.find_or_create_by_twitter_user_name(params[:twitterhandle])
+    @client.user_timeline(params[:twitterhandle])
     erb :user_tweets
   rescue Exception => e 
-    p e
     @error = true
     erb :user_tweets
   end

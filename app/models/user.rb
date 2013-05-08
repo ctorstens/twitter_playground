@@ -38,7 +38,16 @@ class User < ActiveRecord::Base
   end
 
   def fetch_tweets!
-    fetched_tweets = Twitter.user_timeline(self.twitter_user_name).map {|tweet| tweet.text}
+    @client = Twitter::Client.new(
+        :oauth_token => self.twitter_oauth_token,
+        :oauth_token_secret => self.twitter_oauth_secret
+        )
+    puts "Fetch Tweets in user"
+    p @client
+
+    fetched_tweets = @client.user_timeline(self.twitter_user_name).map {|tweet| tweet.text}
+    puts "Fetched Tweets"
+    p fetched_tweets
     fetched_tweets.each do |t| 
       self.tweets << Tweet.create(:text => t)
     end
