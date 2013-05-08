@@ -3,14 +3,11 @@
 <input type='submit' value='Submit'>
 </form>
 
-<% if @access_token %>
+<% if @twitter_access_token %>
   <div class='twitter_login'>
     <p>
-      <strong>token:</strong> <%= @access_token.token %><br>
-      <strong>secret:</strong> <%= @access_token.secret %><br>
-    </p>
-    <p>
-      <button><a href="/twitter/sign_out">Sign Out</a></button>
+      <strong>token:</strong> <%= @twitter_access_token.token %><br>
+      <strong>secret:</strong> <%= @twitter_access_token.secret %><br>
     </p>
   </div>
 <% else %>

@@ -37,13 +37,6 @@ require 'bcrypt'
 require 'twitter'
 require 'oauth'
 
-# Twitter.configure do |config|
-#   config.consumer_key = 'g9tNG5YcyOAxd9kSa4W1Hw'
-#   config.consumer_secret = 'V6iUV2wI5jcjo63e1JihLrWXhWWCY8H4LNxeARwMP8'
-#   config.oauth_token = '14253006-oIfV4U1RZCGX9z45VgkFwcqhiTUOSgn6neEtfHh1I'
-#   config.oauth_token_secret = 'KKQfws8sFSOQDBQAxxdp4TBHpISSExSjdQ7PkNl8'
-# end
-
 Twitter.configure do |config|
   config.consumer_key = ENV['TWITTER_KEY']
   config.consumer_secret = ENV['TWITTER_SECRET']

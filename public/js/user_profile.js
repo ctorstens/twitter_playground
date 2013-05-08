@@ -20,6 +20,5 @@ $.ajax({
     $(this).html(replaceURLWithHTMLLinks(text));
   });
   $('.user_tweets').slideToggle();
-  // $('.user_tweets').slideToggle();
 }); 
 

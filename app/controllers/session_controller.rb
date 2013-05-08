@@ -4,10 +4,10 @@ get '/sessions/new' do
   erb :sign_in
 end
 
-# get '/sign_out' do
-#   session.clear
-#   redirect '/'
-# end
+get '/sign_out' do
+  session.clear
+  redirect '/'
+end
 
 post '/sessions' do
   # sign-in
