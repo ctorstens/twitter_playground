@@ -1,4 +1,18 @@
 <form method='post' action='/'>
-<input type='text' name='twitter_handle'placeholder='@username'>
+<input type='text' name='twitter_user_name'placeholder='@username'>
 <input type='submit' value='Submit'>
 </form>
+
+<% if @access_token %>
+  <div class='twitter_login'>
+    <p>
+      <strong>token:</strong> <%= @access_token.token %><br>
+      <strong>secret:</strong> <%= @access_token.secret %><br>
+    </p>
+    <p>
+      <button><a href="/twitter/sign_out">Sign Out</a></button>
+    </p>
+  </div>
+<% else %>
+  <button><a href="/twitter/sign_in">Sign In with Twitter</a></button>
+<% end %>

@@ -2,9 +2,9 @@
   <h1>User doesn't exist</h1>
 <% else %>
 
-  <div class='user_tweets'><h1>@<%= @user.twitter_handle %></h1></div>
+  <div class='user_tweets'><h1>@<%= @user.twitter_user_name %></h1></div>
 
-  <input id='twitter_handle' type='hidden' value='<%= @user.twitter_handle %>'></input>
+  <input id='twitter_user_name' type='hidden' value='<%= @user.twitter_user_name %>'></input>
 
   <div class="spinner"><img src='/ajax-loader.gif'></img></div>
 

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
 
   def average_tweet_interval
-    most_recent_tweets = Twitter.user_timeline(self.twitter_handle).take(NUM_OF_SAMPLE_TWEETS)
+    most_recent_tweets = Twitter.user_timeline(self.twitter_user_name).take(NUM_OF_SAMPLE_TWEETS)
     most_recent_times = most_recent_tweets.map {|tweet| tweet.created_at}
     arr_diff = most_recent_times.reverse.each_cons(2).map {|a,b| b - a }
     arr_diff.inject(0) {|sum, time| sum + time}.to_f / NUM_OF_SAMPLE_TWEETS
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def fetch_tweets!
-    fetched_tweets = Twitter.user_timeline(self.twitter_handle).map {|tweet| tweet.text}
+    fetched_tweets = Twitter.user_timeline(self.twitter_user_name).map {|tweet| tweet.text}
     fetched_tweets.each do |t| 
       self.tweets << Tweet.create(:text => t)
     end

@@ -4,6 +4,11 @@ get '/sessions/new' do
   erb :sign_in
 end
 
+# get '/sign_out' do
+#   session.clear
+#   redirect '/'
+# end
+
 post '/sessions' do
   # sign-in
   @user_name = params[:user_name]

@@ -3,25 +3,25 @@ get '/' do
 end
 
 post '/' do
-  redirect '/' + params[:twitter_handle]
+  redirect '/' + params[:twitter_user_name]
 end
 
-get '/:twitterhandle' do
-  begin
-    Twitter.user(params[:username])
-    @user = User.find_or_create_by_twitter_handle(params[:twitterhandle])
-    erb :user_tweets
-  rescue Exception => e 
-    p e
-    @error = true
-    erb :user_tweets
-  end
+# get '/:twitterhandle' do
+#   begin
+#     Twitter.user(params[:username])
+#     @user = User.find_or_create_by_twitter_user_name(params[:twitterhandle])
+#     erb :user_tweets
+#   rescue Exception => e 
+#     p e
+#     @error = true
+#     erb :user_tweets
+#   end
 
-end
+# end
 
 post '/users_tweets' do 
   content_type :json
-  @user = User.find_by_twitter_handle(params[:twitter_handle])
+  @user = User.find_by_twitter_user_name(params[:twitter_user_name])
   if @user.tweets_stale?
     @user.fetch_tweets!
   end

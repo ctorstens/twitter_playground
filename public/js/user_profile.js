@@ -11,7 +11,7 @@
 $.ajax({
   method: 'post',
   url: '/users_tweets',
-  data: {twitter_handle: $('#twitter_handle').val()}
+  data: {twitter_user_name: $('#twitter_user_name').val()}
 }).done(function (data) {
   $('.spinner').hide();
   $('.container').append(data);
